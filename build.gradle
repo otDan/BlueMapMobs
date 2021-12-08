@@ -19,7 +19,7 @@ dependencies {
     compileOnly 'com.github.BlueMap-Minecraft:BlueMapAPI:+'
 }
 
-def targetJavaVersion = 16
+def targetJavaVersion = 11
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
@@ -30,7 +30,7 @@ java {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    if (targetJavaVersion >= 16 || JavaVersion.current().isJava10Compatible()) {
+    if (targetJavaVersion >= 11 || JavaVersion.current().isJava10Compatible()) {
         options.release = targetJavaVersion
     }
 }
