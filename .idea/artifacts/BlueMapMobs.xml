@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="BlueMapMobs">
-    <output-path>$PROJECT_DIR$/../../Servers/servers/1.16.5/plugins</output-path>
-    <root id="archive" name="BlueMapMobs.jar">
-      <element id="module-output" name="BlueMapMobs" />
-    </root>
-  </artifact>
-</component>
