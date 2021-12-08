@@ -11,21 +11,21 @@ import java.util.Optional;
 
 public class Main extends JavaPlugin {
     private ImageManager imageManager;
-    private BukkitTask updaterTaks;
+    private BukkitTask updaterTask;
 
     @Override
     public void onEnable() {
         BlueMapAPI.onEnable(api -> {
             registerBlueMap();
             MobUpdater mobUpdater = new MobUpdater(this);
-            this.updaterTaks = Bukkit.getScheduler().runTaskTimerAsynchronously(this, mobUpdater, 0, 20*3);
+            this.updaterTask = Bukkit.getScheduler().runTaskTimerAsynchronously(this, mobUpdater, 0, 20*3);
         });
     }
 
     @Override
     public void onDisable() {
-        if (this.updaterTaks != null) {
-            this.updaterTaks.cancel();
+        if (this.updaterTask != null) {
+            this.updaterTask.cancel();
         }
     }
 
