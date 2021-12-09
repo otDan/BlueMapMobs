@@ -69,16 +69,16 @@ public class MobUpdater implements Runnable {
     }
 
     private void removeMobMarkers() {
-        try {
-            Optional<BlueMapAPI> api = BlueMapAPI.getInstance();
-            if (api.isPresent()) {
-                MarkerAPI markerAPI = api.get().getMarkerAPI();
+        BlueMapAPI.getInstance().ifPresent(blueMapAPI -> {
+            try {
+                MarkerAPI markerAPI = blueMapAPI.getMarkerAPI();
                 MarkerSet markerSetMobs = markerAPI.createMarkerSet("mobs");
                 this.mobMarkers.forEach(markerSetMobs::removeMarker);
                 this.mobMarkers.clear();
                 markerAPI.save();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException ignored) {
-        }
+        });
     }
 }
